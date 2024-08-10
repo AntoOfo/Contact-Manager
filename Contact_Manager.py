@@ -19,10 +19,28 @@ while True:
             print("Contact added successfully.")
             
     elif user_input == 2:
-        pass
-    elif user_input == 3:
+        if df.empty:
+            print("No contacts found")
+        else:
+            print("Here's all the existing contacts: ")
+            print(df)
             
-        pass
+    elif user_input == 3:
+        name_to_update = input("Enter the contact's first name to update: ")
+        contact_index = df[df["first_name"] == name_to_update].index # finds index of contact who has the first name
+        
+        if not contact_index.empty:
+             print("Found contact: ", df.loc[contact_index[0]]) # prints the contact details
+             field_to_update = input(f"Enter the field to update ({', '.join(columns)}): ") 
+             if field_to_update in columns: 
+                df.at[contact_index[0], field_to_update] = input(f"Enter the new value for {field_to_update}: ")    # updates the field
+                df.to_csv(filename, index=False)
+                print("Contact updated successfully.")
+                
+             else:
+                print("Invalid field name.")
+        else:
+            print("Contact not found.")
                 
     elif user_input == 4:
         pass
