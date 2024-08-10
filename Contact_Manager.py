@@ -5,13 +5,7 @@ import os
 filename = "contacts.csv"
 columns = ["first_name", "last_name", "phone", "email", "address"]
 
-# checks if file exists and 
-file_exists = os.path.isfile("contacts.csv")
-write_header = not file_exists or os.path.getsize("contacts.csv") == 0
-
-# creates csv file called "contacts" and a mode to add new data
-with open("contacts.csv", mode="a") as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=columns)
+df = pd.DataFrame(columns=columns)
     
     if write_header:    # writes header only when neeeded
         writer.writeheader()
