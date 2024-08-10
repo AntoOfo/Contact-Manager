@@ -59,8 +59,7 @@ while True:
             if not contacts_to_delete.empty:
                 print("Found contacts:")
                 print(contacts_to_delete)
-        
-                # Optionally, let the user choose which record(s) to delete
+       
                 delete_all = input("Do you want to delete all matching contacts? (Y/N): ").strip().lower()
         
                 if delete_all == 'y':
@@ -81,7 +80,7 @@ while True:
             
 
 
-        continue_input = input("Do you want to continue? Y/N").strip().lower()
+        continue_input = input("Do you want to continue? Y/N").strip().lower()   # turns everything to lowercase
         if continue_input == "N" or continue_input == "n":
             print("Thanks for your time.")
             break
